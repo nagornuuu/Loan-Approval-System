@@ -69,12 +69,42 @@ The project is divided among three team members, each handling a specific module
 
 ## Example Usage
 ### Submitting a Loan Request
-
-
+1. Use an API testing tool like Postman or cURL to submit a loan request.
+2. Send a POST request to /api/loans with the following JSON body
+```
+{
+    "userId": 1,
+    "amount": 10000,
+    "repaymentPeriod": 12
+}
+```
+3. The response will confirm the receipt of the loan request:
+```
+"Loan request received"
+```
 ### Expected Output
-
-
----
+- Loan Request Processing:
+```
+✅ Loan APPROVED for user: 1
+❌ Loan REJECTED for user: 2
+```
+- Fetching All Loans:
+```
+[
+    {
+        "userId": 1,
+        "amount": 10000,
+        "repaymentPeriod": 12,
+        "isApproved": true
+    },
+    {
+        "userId": 2,
+        "amount": 5000,
+        "repaymentPeriod": 6,
+        "isApproved": false
+    }
+]
+```
 
 ## Future Enhancements
 - Implement a **database** instead of using List/Map
