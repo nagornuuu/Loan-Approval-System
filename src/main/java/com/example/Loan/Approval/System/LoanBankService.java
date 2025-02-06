@@ -4,6 +4,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Service class that manages tasks.
@@ -50,7 +58,7 @@ public class LoanBankService {
      */
     public User getUserById(Long id) {
         return userList.stream()
-                .filter(user -> user.getId()==id) // Filter tasks by ID
+                .filter(user -> user.getId().equals(id)) // Filter tasks by ID
                 .findFirst() // Return the first match (if any)
                 .orElse(null); // Return null if no task is found
     }
@@ -62,17 +70,20 @@ public class LoanBankService {
      * @return The newly created task with an assigned ID.
      */
 
-    public User createUser(String name, int creditScore, double income, boolean hasUnpaidLoans) {
-        User user = new User(nextId++, name, creditScore, income, hasUnpaidLoans); // Assign a unique ID to the new task
+    public User createUser(User user) {
+        user.setId(nextId++); // Assign a unique ID to the new task
         userList.add(user); // Add the task to the in-memory list
         return user; // Return the created task
     }
 
-    public Loan createLoan(User user, double amount, int repaymentPeriod) {
-        Loan loan = new Loan(user.getId(), amount, repaymentPeriod);
-        user.addLoan(loan);
-        return loan; // Return the created task
+    public User requestLoan(Loan loan) {
+        User user = getUserById(loan.getId());
+
+        if (user.creditScore < 600 && user.monthlyIncome < loan.ammount * 5 && user.unpaidLoans > 0)
+            loan.setApproved(true);
+        return user; // Return the created task
     }
+
 //
 //    public Note updateNote(Note note) {
 //        Note aux = getNoteById(note.getId()); // Assign a unique ID to the new task
