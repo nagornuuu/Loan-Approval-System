@@ -9,7 +9,16 @@ import java.util.stream.Collectors;
 
 @Repository
 public class UserRepository {
+    /**
+     * A map that stores users with their IDs
+     * The key is a unique ID (Long), and the value is a User object
+     */
     private Map<Long, User> users = new HashMap<>();
+
+    /**
+     * A counter used to generate unique IDs for each user
+     * Starts at 1 and increments with each new user added
+     */
     private long nextId = 1;
 
     /**

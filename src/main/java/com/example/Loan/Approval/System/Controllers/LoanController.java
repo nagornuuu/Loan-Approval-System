@@ -5,6 +5,7 @@ import com.example.Loan.Approval.System.Models.User;
 import com.example.Loan.Approval.System.Services.LoanProcessingService;
 import com.example.Loan.Approval.System.Services.UserService;
 import com.example.Loan.Approval.System.Repository.LoanRepository;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -64,6 +65,11 @@ public class LoanController {
         return "Loan request received";
     }
 
+    /**
+     * Retrieves a list of all loans from the repository
+     *
+     * @return a list of loan objects representing all loans in the database
+     */
     @GetMapping("/loans")
     public List<Loan> getAllLoans() {
         return loanRepository.findAll();
