@@ -2,51 +2,34 @@ package com.example.Loan.Approval.System;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
-/**
- * Controller class that handles HTTP requests for the Task
- * Management API.
- * This class provides endpoints to create, retrieve, update,
- * and delete tasks.
- */
 
 @RestController
 @RequestMapping("/loans")
-public class NotesController {
-    // Service that contains the business logic for managing
+public class LoanBankController {
     private final LoanBankService loanBankService;
 
-    /**
-     * Constructor for injecting TaskService.
-     *
-     * @param loanBankService The service responsible for managing
-     *                        task operations.
-     */
-    @Autowired // Automatically injects the TaskService dependency .
-    public NotesController(LoanBankService loanBankService) {
+    @Autowired
+    public LoanBankController(LoanBankService loanBankService) {
         this.loanBankService = loanBankService;
     }
 
-    /**
-     * Retrieves all tasks from the system.
-     *
-     * @return A list of all tasks.
-     */
+    @PostMapping("/apply")
+    public Loan createLoan(@RequestBody Loan request) {
+        User user = loanBankService.getUserById(request.getUserId());
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+        return loanBankService.createLoan(user, request.getAmount(), request.getRepaymentPeriod());
+    }
 
-    @GetMapping
+    @PostMapping("/users")
+    public User createUser(@RequestBody User request) {
+        return loanBankService.createUser(request.getName(), request.getCreditScore(), request.getIncome(), request.isHasUnpaidLoans());
+    }
+
+    @GetMapping("/users")
     public List<User> getAllUsers() {
         return loanBankService.getAllUsers();
-    }
-
-    @GetMapping("/{id}")
-    public Note getNoteById(@PathVariable Long id) {
-        return notesService.getNoteById(id);
-    }
-
-    @GetMapping("/requestLoan")
-    public Loan getNoteById(@PathVariable Loan loan, @PathVariable Long id) {
-        return loanBankService.requestLoan(loan);
     }
 }

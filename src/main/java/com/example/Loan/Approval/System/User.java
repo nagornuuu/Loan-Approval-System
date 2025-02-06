@@ -1,11 +1,14 @@
 package com.example.Loan.Approval.System;
 
+import java.util.List;
+
 public class User {
     private long id;
     private String name;
     private int creditScore;
     private double income;
     private boolean hasUnpaidLoans;
+    private List<Loan> userLoans;
 
     public User(long id, String name, int creditScore, double income, boolean hasUnpaidLoans){
         this.id = id;
@@ -49,6 +52,10 @@ public class User {
 
     public void setHasUnpaidLoans(boolean hasUnpaidLoans) {
         this.hasUnpaidLoans = hasUnpaidLoans;
+    }
+
+    public void addLoan(Loan loan){
+        userLoans.add(loan);
     }
 
 }

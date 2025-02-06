@@ -1,17 +1,17 @@
 package com.example.Loan.Approval.System;
 
 public class Loan {
-    int userId;
+    long userId;
     double amount;
     int repaymentPeriod;
 
-    public Loan(int userId, double amount, int repaymentPeriod){
+    public Loan(long userId, double amount, int repaymentPeriod){
         this.userId = userId;
         this.amount = amount;
         this.repaymentPeriod = repaymentPeriod;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
