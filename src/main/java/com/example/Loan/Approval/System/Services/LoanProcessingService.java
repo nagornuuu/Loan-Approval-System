@@ -2,7 +2,6 @@ package com.example.Loan.Approval.System.Services;
 
 import com.example.Loan.Approval.System.Models.LoanRequest;
 import com.example.Loan.Approval.System.Models.User;
-import com.example.Loan.Approval.System.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutorService;
