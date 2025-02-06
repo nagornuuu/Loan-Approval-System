@@ -8,25 +8,55 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Service class responsible for processing loan requests asynchronously
+ */
 @Service
 public class LoanProcessingService {
-    private final ExecutorService executorService = Executors.newFixedThreadPool(5);
-    private final LoanApprovalService loanApprovalService;
-    private final UserRepository userRepository;
-    private final LoanRepository loanRepository;
+    /**
+     * Executor service to handle asynchronous loan processing
+     */
+    private ExecutorService executorService = Executors.newFixedThreadPool(5);
 
+    /**
+     * Service to evaluate loan approval
+     */
+    private LoanApprovalService loanApprovalService;
+
+    /**
+     * Repository for managing user data
+     */
+    private UserRepository userRepository;
+
+    /**
+     * Repository for managing loan data
+     */
+    private LoanRepository loanRepository;
+
+    /**
+     * Constructs a LoanProcessingService with necessary dependencies
+     *
+     * @param loanApprovalService The service for evaluating loan approval
+     * @param userRepository The repository for accessing user data
+     * @param loanRepository The repository for storing loan data
+     */
     public LoanProcessingService(LoanApprovalService loanApprovalService, UserRepository userRepository, LoanRepository loanRepository) {
         this.loanApprovalService = loanApprovalService;
         this.userRepository = userRepository;
         this.loanRepository = loanRepository;
     }
 
+    /**
+     * Processes a loan request asynchronously
+     *
+     * @param loan The loan request to process
+     */
     public void processLoanRequest(Loan loan) {
         executorService.submit(() -> {
             User user = userRepository.findById(loan.getUserId());
 
             if (user == null) {
-                System.out.println("User not found: " + loan.getUserId());
+                System.out.println("❌ User not found: " + loan.getUserId());
                 return;
             }
 
