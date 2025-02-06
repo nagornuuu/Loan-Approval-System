@@ -75,6 +75,15 @@ public class LoanBankService {
         userList.add(user); // Add the task to the in-memory list
         return user; // Return the created task
     }
+
+    public User requestLoan(Loan loan) {
+        User user = getUserById(loan.getId());
+
+        if (user.creditScore < 600 && user.monthlyIncome < loan.ammount * 5 && user.unpaidLoans > 0)
+            loan.setApproved(true);
+        return user; // Return the created task
+    }
+
 //
 //    public Note updateNote(Note note) {
 //        Note aux = getNoteById(note.getId()); // Assign a unique ID to the new task

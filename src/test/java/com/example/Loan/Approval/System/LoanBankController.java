@@ -52,7 +52,7 @@ public class NotesController {
     }
 
     @GetMapping("/requestLoan")
-    public Loan getNoteById(@PathVariable Loan loan, @PathVariable Long id) {
+    public Loan getNoteById(@PathVariable Loan loan) {
         return loanBankService.requestLoan(loan);
     }
 }
