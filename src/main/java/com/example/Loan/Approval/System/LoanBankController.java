@@ -5,12 +5,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
 /**
  * Controller class that handles HTTP requests for the Task
  * Management API.
@@ -28,7 +22,7 @@ public class NotesController {
      * Constructor for injecting TaskService.
      *
      * @param loanBankService The service responsible for managing
-     *                    task operations.
+     *                        task operations.
      */
     @Autowired // Automatically injects the TaskService dependency .
     public NotesController(LoanBankService loanBankService) {

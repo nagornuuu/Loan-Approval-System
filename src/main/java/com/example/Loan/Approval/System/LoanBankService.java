@@ -4,14 +4,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Service class that manages tasks.
@@ -70,8 +62,8 @@ public class LoanBankService {
      * @return The newly created task with an assigned ID.
      */
 
-    public User createUser(User user) {
-        user.setId(nextId++); // Assign a unique ID to the new task
+    public User createUser(String name, int creditScore, double income, boolean hasUnpaidLoans) {
+        User user = new User(nextId++, name, creditScore, income, hasUnpaidLoans); // Assign a unique ID to the new task
         userList.add(user); // Add the task to the in-memory list
         return user; // Return the created task
     }
