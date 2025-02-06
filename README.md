@@ -70,7 +70,16 @@ The project is divided among three team members, each handling a specific module
 ## Example Usage
 ### Submitting a Loan Request
 1. Use an API testing tool like Postman or cURL to submit a loan request.
-2. Send a POST request to /api/loans with the following JSON body
+2. Send a POST request to /api/users with the following JSON body to create a user
+```
+{
+    "name": "John Doe",
+    "creditScore": 650,
+    "monthlyIncome": 5000.0,
+    "hasUnpaidLoans": false
+}
+```
+3. Send a POST request to /api/loans with the following JSON body
 ```
 {
     "userId": 1,
@@ -78,7 +87,7 @@ The project is divided among three team members, each handling a specific module
     "repaymentPeriod": 12
 }
 ```
-3. The response will confirm the receipt of the loan request:
+4. The response will confirm the receipt of the loan request:
 ```
 "Loan request received"
 ```
