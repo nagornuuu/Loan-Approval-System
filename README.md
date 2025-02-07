@@ -13,7 +13,6 @@ The **Loan Approval System** is designed to help a bank evaluate loan requests b
 - If a user's **credit score is below 600**, the loan is **automatically rejected**
 - If the **loan amount exceeds 5 times** the user’s **monthly income**, it is **rejected**
 - If the user has **existing unpaid loans**, their approval rating is **reduced**
-- 
 
 ### 3. Multithreading for Loan Processing
 - The system **uses threads** to evaluate multiple loan applications **simultaneously**
