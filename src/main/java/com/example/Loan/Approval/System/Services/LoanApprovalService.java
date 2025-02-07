@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LoanApprovalService {
+
     /**
      * Evaluates whether a user is eligible for a loan based on credit score, income, and existing debts
      *

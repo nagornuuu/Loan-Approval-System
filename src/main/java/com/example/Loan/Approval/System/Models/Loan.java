@@ -28,8 +28,8 @@ public class Loan {
      *
      * @return The user ID
      */
-
     public long getUserId() { return userId; }
+
     /**
      * Gets the amount of the loan
      *

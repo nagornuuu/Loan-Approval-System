@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Repository
 public class LoanRepository {
+
     /**
      * List to store loan objects in memory
      */
@@ -24,6 +25,7 @@ public class LoanRepository {
     public void save(Loan loan) {
         loans.add(loan);
     }
+
     /**
      * Retrieves all loans stored in the repository
      *

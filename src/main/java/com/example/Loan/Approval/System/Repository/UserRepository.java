@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class UserRepository {
+
     /**
      * A map that stores users with their IDs
      * The key is a unique ID (Long), and the value is a User object
