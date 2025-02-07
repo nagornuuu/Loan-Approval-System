@@ -76,6 +76,27 @@ public class LoanController {
     }
 
     /**
+     * Endpoint to forgive loans for a specific user.
+     *
+     * This method processes the forgiveness of loans for a user identified by their unique userId.
+     * It interacts with the {@link UserService} to handle the forgiveness logic and returns a confirmation
+     * message if the loans were successfully forgiven.
+     *
+     * @param userId The unique ID of the user whose loans will be forgiven
+     * @return A message indicating whether the loans were successfully forgiven or if the user was not found
+     */
+    @GetMapping("/forgiveLoans/{userId}")
+    public String forgiveLoans(@PathVariable long userId) {
+        boolean success = userService.forgiveLoans(userId);
+        if (success) {
+            return "Loans successfully forgiven for user with ID: " + userId;
+        } else {
+            return "User with ID: " + userId + " not found or no loans to forgive.";
+        }
+    }
+
+
+    /**
      * Endpoint to find a user by ID
      *
      * @param userId The ID of the user to find

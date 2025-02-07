@@ -47,4 +47,23 @@ public class UserService {
         return userRepository.findById(userId);
     }
 
+    /**
+     * Forgives all loans for a specific user by clearing their loan list.
+     *
+     * This method iterates through all users and checks if their ID matches the provided user ID.
+     * If a match is found, it clears the user's loan list, effectively forgiving all loans.
+     *
+     * @param id The unique ID of the user whose loans will be forgiven
+     * @return true if the loans were successfully forgiven, false if the user was not found
+     */
+    public boolean forgiveLoans(long id) {
+        List<User> users = getAllUsers();
+        for (User user : users) {
+            if (user.getId() == id) {
+                user.getUserLoans().clear();
+                return true;  // Successfully forgave loans
+            }
+        }
+        return false;  // User not found
+    }
 }
