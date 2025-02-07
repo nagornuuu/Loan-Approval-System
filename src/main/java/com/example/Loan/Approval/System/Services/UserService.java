@@ -42,4 +42,9 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    public User findUserById(long userId) {
+        return userRepository.findById(userId);
+    }
+
 }

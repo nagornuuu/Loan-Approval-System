@@ -74,4 +74,21 @@ public class LoanController {
     public List<Loan> getAllLoans() {
         return loanRepository.findAll();
     }
+
+    /**
+     * Endpoint to find a user by ID
+     *
+     * @param userId The ID of the user to find
+     * @return User object if found, otherwise an empty User with "User not found" message
+     */
+    @GetMapping("/users/{id}")
+    public User getUserById(@PathVariable("id") long userId) {
+        User user = userService.findUserById(userId);
+
+        if (user != null) {
+            return user;
+        } else {
+            return new User(-1, "User not found", 0, 0, false); // Returning a default user object
+        }
+    }
 }

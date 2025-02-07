@@ -38,6 +38,7 @@ public class Loan {
     public double getAmount() { return amount; }
 
     public boolean isApproved() { return isApproved; }
+
     /**
      * Sets the approval status of the loan
      *
