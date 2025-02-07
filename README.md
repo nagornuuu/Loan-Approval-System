@@ -67,6 +67,31 @@ The project is divided among three team members, each handling a specific module
    ```
 
 ---
+## API Endpoints
+### Create User
+```
+POST /api/users
+```
+### Get All Users
+```
+GET /api/users
+```
+### Request A Loan
+```
+POST /api/loans
+```
+### Get All Loans
+```
+GET /api/loans
+```
+### Forgive Loans For A User
+```
+GET /api/forgiveLoans/{userId}
+```
+### Get User By Id
+```
+GET /api/users/{id}
+```
 
 ## Example Usage
 ### Submitting a Loan Request
