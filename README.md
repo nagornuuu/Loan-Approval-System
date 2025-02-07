@@ -7,11 +7,13 @@ The **Loan Approval System** is designed to help a bank evaluate loan requests b
 ### 1. Users & Loan Requests
 - A user can request a loan by specifying the **loan amount** and the **repayment period**
 - Each loan request is stored using a **List** or **Map** for easy retrieval and processing
+- *Extra Features*. Ability to find a user by id, and to Forgive Loans to any user.
 
 ### 2. Loan Approval Criteria
 - If a user's **credit score is below 600**, the loan is **automatically rejected**
 - If the **loan amount exceeds 5 times** the user’s **monthly income**, it is **rejected**
 - If the user has **existing unpaid loans**, their approval rating is **reduced**
+- 
 
 ### 3. Multithreading for Loan Processing
 - The system **uses threads** to evaluate multiple loan applications **simultaneously**
